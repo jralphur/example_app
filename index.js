@@ -112,12 +112,14 @@ app.post('/new_note_spa', (req, res) => {
   res.status(201).send({ message: 'note created'})
 })
 
+/* for the traditional page application, see `notes_page` in this .js */
 app.post('/new_note', (req, res) => {
   notes.push( { 
     content: req.body.note,
     date: new Date()
   })
-  
+  /* redirect, as in make another GET request to /notes, 
+   * refreshing everything required to create notes page plus the new note */
   res.redirect('/notes')
 })
 
